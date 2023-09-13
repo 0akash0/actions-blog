@@ -1,0 +1,24 @@
+name: Environment Variable Tutorial
+
+env:
+  WORKFLOW_VARIABLE: "This is a workflow-level variable!"
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      JOB_VARIABLE: "This is a job-level variable!"
+
+    steps:
+      - name: Print environment variables
+        env:
+          STEP_VARIABLE: "This is a step-level variable..."
+        run: |
+          echo "Here are my custom environment variables"
+          echo $WORKFLOW_VARIABLE
+          echo $JOB_VARIABLE
+          echo $STEP_VARIABLE
